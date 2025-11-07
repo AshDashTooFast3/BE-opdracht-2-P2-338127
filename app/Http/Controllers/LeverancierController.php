@@ -15,6 +15,7 @@ class LeverancierController extends Controller
 
     public function index()
     {
+        $leveranciers = $this->leverancier->getAllLeveranciers();
         
         return view('home');
     }
