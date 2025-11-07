@@ -6,12 +6,12 @@
 -- 01            12-09-2025      Arjan de Ruijter            New Database
 -- **********************************************************************************/
 
--- DROP DATABASE IF EXISTS BE_Opdracht_1;
+-- DROP DATABASE IF EXISTS BE_Opdracht_2;
 
--- CREATE DATABASE BE_Opdracht_1;
+-- CREATE DATABASE BE_Opdracht_2;
 
 -- Use database laravel
-USE `BE_Opdracht_1`;
+USE `BE_Opdracht_2`;
 
 -- Step: 02
 -- Goal: Create a new table Allergeen

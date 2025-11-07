@@ -1,18 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Models\LeverancierModel;
-use Illuminate\Http\Request;
-
+use App\Models\Leverancier;
 
 
 class LeverancierController extends Controller
 {
-    private $leverantie;
+    private $leverancier;
     public function __construct()
     {
-        $this->leverantie = new LeverancierModel();
+        $this->leverancier = new Leverancier();
     }
 
 
