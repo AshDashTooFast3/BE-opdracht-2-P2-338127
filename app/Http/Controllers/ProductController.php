@@ -28,13 +28,28 @@ class ProductController extends Controller
   
     public function create()
     {
-        
+        return view('producten.create', [
+            'title' => 'Product Toevoegen',
+        ]);
     }
 
    
     public function store(Request $request)
     {
+        $request->validate([
+            'title' => 'required|string|min:3|max:255',
+            'salary' => 'required|min:0',
+            'location' => 'required|string|min:1|max:255',
+        ]);
 
+        $job = Product::create([
+            'title' => $request->input('title'),
+            'salary' => $request->input('salary'),
+            'location' => $request->input('location'),
+            'employer_id' => 1,
+        ]);
+
+        return redirect('/jobs')->with('success', 'Job created successfully!');
     }
     
 }

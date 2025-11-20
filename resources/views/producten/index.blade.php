@@ -42,13 +42,9 @@
                             <td>{{ $product->AantalMagazijn}}</td>
                             <td>{{ $product->Verpakkingseenheid}}</td>
                             <td>{{ $product->LaatsteLevering}}</td>
-                            {{-- <td class="text-center">
-                                <form action="{{ route('producten.create', $leverancier->Id) }}" method="POST">
-                                    @csrf
-                                    @method('GET')
-                                    <button type="submit" class="btn btn-danger btn-sm">Allergenen Info</button>
-                                </form>
-                            </td> --}}
+                            <td class="text-center">
+                                <a href="{{ route('producten.create',  $product->Id) }}" class="btn btn-danger btn-sm">+</a>
+                            </td>
                         </tr>
                     @empty
                         <tr colspan='3'>Geen leveranciers bekend</tr>
