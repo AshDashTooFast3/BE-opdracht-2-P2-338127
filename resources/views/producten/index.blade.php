@@ -15,32 +15,40 @@
 
             <h1>{{ $title }}</h1>
 
-            <hr class="my-4"/>
-            
+            <hr class="my-4" />
+            @forelse ($leveranciers as $leverancier)
+                <p>
+                <p>Naam Leverancier: {{ $leverancier->Naam }}</p>
+                <p>Contactpersoon: {{ $leverancier->ContactPersoon }}</p>
+                <p>Leverancier NR: {{ $leverancier->LeverancierNummer }}</p>
+                <p>Mobiel: {{ $leverancier->Mobiel }}</p>
+                </p>
+            @empty
+                <p>Geen leverancier gevonden</p>
+            @endforelse
+
             <table class="table table-hover table-striped">
                 <thead>
-                    <th>Naam</th>
-                    <th>Contactpersoon</th>
-                    <th>Leveranciernummer</th>
-                    <th>Mobiel</th>
-                    <th>Aantal Verschillende Producten</th>
-                    <th>Toon producten</th>
+                    <th>Naam product</th>
+                    <th>Aantal Magazijn</th>
+                    <th>Verpakkingseenheid</th>
+                    <th>Laatste levering</th>
+                    <th>Nieuwe levering</th>
                 </thead>
                 <tbody>
-                    @forelse ($leveranciers as $leverancier)
+                    @forelse ($producten as $product)
                         <tr>
-                            <td>{{ $leverancier->Naam }}</td>
-                            <td>{{ $leverancier->ContactPersoon}}</td>
-                            <td>{{ $leverancier->LeverancierNummer}}</td>
-                            <td>{{ $leverancier->Mobiel}}</td>
-                            <td class="text-center">{{ $leverancier->VerschillendeProducten }}</td>
-                           <td class="text-center">
+                            <td>{{ $product->ProductNaam }}</td>
+                            <td>{{ $product->AantalMagazijn}}</td>
+                            <td>{{ $product->Verpakkingseenheid}}</td>
+                            <td>{{ $product->LaatsteLevering}}</td>
+                            {{-- <td class="text-center">
                                 <form action="{{ route('producten.index', $leverancier->Id) }}" method="POST">
                                     @csrf
                                     @method('GET')
                                     <button type="submit" class="btn btn-danger btn-sm">Allergenen Info</button>
                                 </form>
-                            </td>
+                            </td> --}}
                         </tr>
                     @empty
                         <tr colspan='3'>Geen leveranciers bekend</tr>

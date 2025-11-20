@@ -204,6 +204,7 @@ CREATE TABLE IF NOT EXISTS Leverancier (
     ContactPersoon VARCHAR(50) NOT NULL,
     LeverancierNummer VARCHAR(20) NOT NULL,
     Mobiel VARCHAR(15) NOT NULL,
+    AantalVerschillendeProducten INT NOT NULL DEFAULT 0,
     CONSTRAINT PK_Leverancier_Id PRIMARY KEY CLUSTERED(Id)
 ) ENGINE = InnoDB;
 
@@ -214,14 +215,15 @@ INSERT INTO
         Naam,
         ContactPersoon,
         LeverancierNummer,
-        Mobiel
+        Mobiel,
+        AantalVerschillendeProducten
     )
 VALUES
-(1, 'Venco', 'Bert van Linge', 'L1029384719', '06-28493827'),
-(2, 'Astra Sweets', 'Jasper del Monte', 'L1029284315', '06-39398734'),
-(3, 'Haribo', 'Sven Stalman', 'L1029324748', '06-24383291'),
-(4, 'Basset', 'Joyce Stelterberg', 'L1023845773', '06-48293823'),
-(5, 'De Bron', 'Remco Veenstra', 'L1023857736', '06-34291234');
+(1, 'Venco', 'Bert van Linge', 'L1029384719', '06-28493827', 2),
+(2, 'Astra Sweets', 'Jasper del Monte', 'L1029284315', '06-39398734', 4),
+(3, 'Haribo', 'Sven Stalman', 'L1029324748', '06-24383291', 2),
+(4, 'Basset', 'Joyce Stelterberg', 'L1023845773', '06-48293823', 1),
+(5, 'De Bron', 'Remco Veenstra', 'L1023857736', '06-34291234', 3);
 
 
 

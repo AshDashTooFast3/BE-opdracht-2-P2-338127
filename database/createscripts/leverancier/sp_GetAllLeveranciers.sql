@@ -12,6 +12,7 @@ BEGIN
           ,LEV.ContactPersoon
           ,LEV.LeverancierNummer
           ,LEV.Mobiel
+          ,LEV.AantalVerschillendeProducten AS VerschillendeProducten
           
     FROM Leverancier AS LEV
     ORDER BY LEV.Naam ASC;
