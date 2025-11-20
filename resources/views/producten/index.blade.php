@@ -43,7 +43,7 @@
                             <td>{{ $product->Verpakkingseenheid}}</td>
                             <td>{{ $product->LaatsteLevering}}</td>
                             {{-- <td class="text-center">
-                                <form action="{{ route('producten.index', $leverancier->Id) }}" method="POST">
+                                <form action="{{ route('producten.create', $leverancier->Id) }}" method="POST">
                                     @csrf
                                     @method('GET')
                                     <button type="submit" class="btn btn-danger btn-sm">Allergenen Info</button>
