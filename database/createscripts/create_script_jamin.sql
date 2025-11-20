@@ -242,6 +242,7 @@ CREATE TABLE IF NOT EXISTS ProductPerLeverancier (
     DatumLevering DATE NOT NULL,
     Aantal INT NOT NULL,
     DatumEerstVolgendeLevering DATE NULL DEFAULT NULL,
+    LaatsteLevering DATE AS (DatumLevering) STORED,
     CONSTRAINT PK_ProductPerLeverancier_Id PRIMARY KEY CLUSTERED(Id),
     CONSTRAINT FK_ProductPerLeverancier_LeverancierId FOREIGN KEY (LeverancierId) REFERENCES Leverancier(Id),
     CONSTRAINT FK_ProductPerLeverancier_ProductId FOREIGN KEY (ProductId) REFERENCES Product(Id)
