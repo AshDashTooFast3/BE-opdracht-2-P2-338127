@@ -49,6 +49,7 @@
                     @empty
                         <tr>
                             <td colspan="5" class="text-center">Dit bedrijf heeft tot nu toe geen producten geleverd aan Jamin</td>
+                            <meta http-equiv="refresh" content="3;url={{ route('home') }}">
                         </tr>
                     @endforelse
                 </tbody>
