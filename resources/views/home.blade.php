@@ -38,7 +38,7 @@
                                 <form action="{{ route('producten.index', $leverancier->Id) }}" method="POST">
                                     @csrf
                                     @method('GET')
-                                    <button type="submit" class="btn btn-danger btn-sm">Allergenen Info</button>
+                                    <button type="submit" class="btn btn-success btn-sm">Toon producten</button>
                                 </form>
                             </td>
                         </tr>

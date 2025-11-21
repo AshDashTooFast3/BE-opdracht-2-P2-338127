@@ -30,6 +30,7 @@ class ProductController extends Controller
     {
         return view('producten.create', [
             'title' => 'Product Toevoegen',
+            'message' => 'Voer de gegevens van het nieuwe product in.',
         ]);
     }
 
