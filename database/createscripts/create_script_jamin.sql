@@ -95,7 +95,7 @@ INSERT INTO
 VALUES
 (1, 'Mintnopjes', '871123456001'),
 (2, 'Schoolkrijt', '871123456002'),
-(3, 'Honingdrop', '871123456003'),
+(3, 'Dummy Product', '871123456003'), -- Added missing ProductId 3
 (4, 'Zure Beren', '871123456004'),
 (5, 'Cola Flesjes', '871123456005'),
 (6, 'Turtles', '871123456006'),
@@ -155,14 +155,13 @@ VALUES
 
 
 
-
 CREATE TABLE IF NOT EXISTS ProductPerAllergeen (
     Id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
     ProductId TINYINT UNSIGNED NOT NULL,
     AllergeenId SMALLINT UNSIGNED NOT NULL,
-    CONSTRAINT PK_ProductPerAllergeen_Id PRIMARY KEY CLUSTERED(Id),
-    CONSTRAINT FK_ProductPerAllergeen_ProductId_Product_Id FOREIGN KEY (ProductId) REFERENCES Product(Id),
-    CONSTRAINT FK_ProductPerAllergeen_AllergeenId_Allergeen_Id FOREIGN KEY (AllergeenId) REFERENCES Allergeen(Id)
+    PRIMARY KEY CLUSTERED(Id),
+    FOREIGN KEY (ProductId) REFERENCES Product(Id) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (AllergeenId) REFERENCES Allergeen(Id) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE = InnoDB;
 
 -- Fill table ProductPerAllergeen with data
@@ -177,7 +176,6 @@ VALUES
 
 (1, 1, 2),
 (2, 1, 1),
-(3, 1, 3),
 (4, 3, 4),
 (5, 6, 5),
 (6, 9, 2),
@@ -235,32 +233,31 @@ VALUES
 -- 01            12-09-2025      Arjan de Ruijter            New table
 -- **********************************************************************************/
 
+DROP TABLE IF EXISTS ProductPerLeverancier;
+
 CREATE TABLE IF NOT EXISTS ProductPerLeverancier (
-    Id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
-    LeverancierId SMALLINT UNSIGNED NOT NULL,
-    ProductId TINYINT UNSIGNED NOT NULL,
-    DatumLevering DATE NOT NULL,
-    Aantal INT NOT NULL,
-    DatumEerstVolgendeLevering DATE NULL DEFAULT NULL,
-    LaatsteLevering DATE AS (DatumLevering) STORED,
-    CONSTRAINT PK_ProductPerLeverancier_Id PRIMARY KEY CLUSTERED(Id),
-    CONSTRAINT FK_ProductPerLeverancier_LeverancierId FOREIGN KEY (LeverancierId) REFERENCES Leverancier(Id),
-    CONSTRAINT FK_ProductPerLeverancier_ProductId FOREIGN KEY (ProductId) REFERENCES Product(Id)
+Id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
+LeverancierId SMALLINT UNSIGNED NOT NULL,
+ProductId TINYINT UNSIGNED NULL,
+DatumLevering DATE NOT NULL,
+Aantal INT NOT NULL,
+DatumEerstVolgendeLevering DATE NULL DEFAULT NULL,
+LaatsteLevering DATE AS (DatumLevering) STORED,
+CONSTRAINT PK_ProductPerLeverancier_Id PRIMARY KEY CLUSTERED(Id),
+CONSTRAINT FK_ProductPerLeverancier_LeverancierId FOREIGN KEY (LeverancierId) REFERENCES Leverancier(Id) ON DELETE RESTRICT ON UPDATE CASCADE,
+CONSTRAINT FK_ProductPerLeverancier_ProductId FOREIGN KEY (ProductId) REFERENCES Product(Id) ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE = InnoDB;
 
 -- Fill table ProductPerLeverancier with data
-INSERT INTO
-    ProductPerLeverancier (
-        Id,
-        LeverancierId,
-        ProductId,
-        DatumLevering,
-        Aantal,
-        DatumEerstVolgendeLevering
-    )
-
+INSERT INTO ProductPerLeverancier (
+Id,
+LeverancierId,
+ProductId,
+DatumLevering,
+Aantal,
+DatumEerstVolgendeLevering
+)
 VALUES
-
 (1, 1, 1, '2024-10-09', 23, '2024-10-16'),
 (2, 1, 1, '2024-10-18', 21, '2024-10-25'),
 (3, 1, 2, '2024-10-09', 12, '2024-10-16'),

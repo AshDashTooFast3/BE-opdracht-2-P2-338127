@@ -43,11 +43,13 @@
                             <td>{{ $product->Verpakkingseenheid}}</td>
                             <td>{{ $product->LaatsteLevering}}</td>
                             <td class="text-center">
-                                <a href="{{ route('producten.create',  $product->Id) }}" class="btn btn-danger btn-sm">+</a>
+                                <a href="{{ route('producten.create',  $product->Id) }}"      class="btn btn-danger btn-sm">+</a>
                             </td>
                         </tr>
                     @empty
-                        <tr colspan='3'>Geen leveranciers bekend</tr>
+                        <tr>
+                            <td colspan="5" class="text-center">Dit bedrijf heeft tot nu toe geen producten geleverd aan Jamin</td>
+                        </tr>
                     @endforelse
                 </tbody>
             </table>

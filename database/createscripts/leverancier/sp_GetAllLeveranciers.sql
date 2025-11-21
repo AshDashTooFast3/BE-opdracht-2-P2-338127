@@ -15,7 +15,7 @@ BEGIN
           ,LEV.AantalVerschillendeProducten AS VerschillendeProducten
           
     FROM Leverancier AS LEV
-    ORDER BY LEV.Naam ASC;
+    ORDER BY LEV.AantalVerschillendeProducten ASC;
 
 END$$
 

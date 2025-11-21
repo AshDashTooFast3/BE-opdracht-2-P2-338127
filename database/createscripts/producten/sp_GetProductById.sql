@@ -13,15 +13,13 @@ BEGIN
         P.Naam AS ProductNaam,
         MAG.AantalAanwezig AS AantalMagazijn,
         MAG.VerpakkingsEenheid AS Verpakkingseenheid,
-        (
-            SELECT MAX(LaatsteLevering)
-            FROM ProductPerLeverancier
-            WHERE ProductId = P.Id
-        ) AS LaatsteLevering
+        PROPL.LaatsteLevering
     FROM Product AS P
     LEFT JOIN Magazijn AS MAG ON MAG.ProductId = P.Id
     LEFT JOIN ProductPerLeverancier AS PROPL ON PROPL.ProductId = P.Id
-    WHERE P.Id = p_productid;
+    WHERE P.Id = p_productid
+    ORDER BY MAG.AantalAanwezig DESC;
+    
 END$$
 
 DELIMITER ;
