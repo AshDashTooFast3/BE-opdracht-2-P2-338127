@@ -43,7 +43,7 @@
                             <td>{{ $product->VerpakkingsEenheid}}</td>
                             <td>{{ $product->DatumLevering}}</td>
                             <td class="text-center">
-                                <a href="{{ route('producten.edit', ['id' => $product->Id]) }}"
+                                <a href="{{ route('producten.edit', ['id' => $product->ProductId]) }}"
                                     class="btn btn-danger btn-sm">+</a>
                             </td>
                         </tr>

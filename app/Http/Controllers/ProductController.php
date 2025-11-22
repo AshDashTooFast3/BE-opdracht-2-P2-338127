@@ -32,13 +32,13 @@ class ProductController extends Controller
     {
         $productenlevering = $this->product->getProductById($id);
         $leveranciers = $this->product->getLeverancierById($id);
+
         
         return view('producten.edit', [
             'title' => 'Nieuwe levering toevoegen',
             'message' => 'Vul het formulier in om een nieuwe levering toe te voegen.',
-            'productenlevering' => collect($productenlevering),
+            'productenlevering' => $productenlevering,
             'leveranciers' => $leveranciers,
-
         ]);
     }
 

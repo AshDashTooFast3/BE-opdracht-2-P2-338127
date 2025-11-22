@@ -23,14 +23,19 @@ class Product extends Model
 
     public $timestamps = false;
 
-    public function GetProductenByLeverancierId($leverancierId)
+    public function GetProductenByLeverancierId($id)
     {
-        return DB::select("CALL sp_GetProductenByLeverancierId(?)", [$leverancierId]);    
+        return DB::select("CALL sp_GetProductenByLeverancierId(?)", [$id]);    
     }
 
     public function getLeverancierById($id)
     {
         return DB::select('CALL sp_GetLeverancierById(?)', [$id]);
+    }
+
+    public function getProductById($id)
+    {
+        return DB::select('CALL sp_GetProductById(?)', [$id]);
     }
 
     public function UpdateProductPerLeverancier($id, $Aantal, $DatumLevering)
