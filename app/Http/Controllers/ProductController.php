@@ -21,7 +21,7 @@ class ProductController extends Controller
         $leveranciers = $this->product->getLeverancierById($Id);
 
         return view('producten.index', [
-            'title' => 'Leveranciers Overzicht',
+            'title' => 'Geleverde producten',
             'producten' => $producten,
             'leveranciers' => $leveranciers,
         ]);
@@ -35,8 +35,7 @@ class ProductController extends Controller
 
         
         return view('producten.edit', [
-            'title' => 'Nieuwe levering toevoegen',
-            'message' => 'Vul het formulier in om een nieuwe levering toe te voegen.',
+            'title' => 'Levering product',
             'productenlevering' => $productenlevering,
             'leveranciers' => $leveranciers,
         ]);

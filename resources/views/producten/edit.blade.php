@@ -11,7 +11,13 @@
 <body class="container my-5 d-flex justify-content-center">
     <div class="col-md-8">
         <h1>{{ $title }}</h1>
-        <p>{{ $message }}</p>
+
+        @if ($productenlevering)
+            <p><strong>Product:</strong> {{ $productenlevering[0]->ProductNaam }}</p>
+            <p><strong>Leverancier:</strong> {{ $productenlevering[0]->LeverancierNaam }}</p>
+            <p><strong>Contactpersoon:</strong> {{ $productenlevering[0]->ContactPersoon }}</p>
+            <p><strong>Mobiel:</strong> {{ $productenlevering[0]->Mobiel }}</p>
+        @endif
 
         @if ($productenlevering[0]->IsActief == 0)
             <div class="bg-red-500 text-white p-3 rounded mt-4">

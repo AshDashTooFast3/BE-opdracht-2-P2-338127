@@ -18,10 +18,10 @@
             <hr class="my-4" />
             @forelse ($leveranciers as $leverancier)
                 <p>
-                <p>Naam Leverancier: {{ $leverancier->LeverancierNaam }}</p>
-                <p>Contactpersoon: {{ $leverancier->ContactPersoon }}</p>
-                <p>Leverancier NR: {{ $leverancier->LeverancierNummer }}</p>
-                <p>Mobiel: {{ $leverancier->Mobiel }}</p>
+                <p><strong>Naam Leverancier:</strong> {{ $leverancier->LeverancierNaam }}</p>
+                <p><strong>Contactpersoon:</strong> {{ $leverancier->ContactPersoon }}</p>
+                <p><strong>Leverancier NR:</strong> {{ $leverancier->LeverancierNummer }}</p>
+                <p><strong>Mobiel:</strong> {{ $leverancier->Mobiel }}</p>
                 </p>
             @empty
                 <p>Geen leverancier gevonden</p>

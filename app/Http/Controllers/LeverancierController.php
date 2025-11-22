@@ -18,7 +18,7 @@ class LeverancierController extends Controller
         $leveranciers = $this->leverancier->getAllLeveranciers();
         
         return view('home', [
-            'title' => 'Leveranciers Overzicht',
+            'title' => 'Overzicht Leveranciers',
             'leveranciers' => $leveranciers,
         ]);
     }

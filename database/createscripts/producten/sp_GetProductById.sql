@@ -9,6 +9,8 @@ BEGIN
         P.Id AS ProductId,
         P.Naam AS ProductNaam,
         L.Naam AS LeverancierNaam,
+        L.ContactPersoon,
+        L.Mobiel,
          IF(MAG.VerpakkingsEenheid = FLOOR(MAG.VerpakkingsEenheid),
            FLOOR(MAG.VerpakkingsEenheid),
            MAG.VerpakkingsEenheid
