@@ -230,10 +230,10 @@ INSERT INTO
         AantalVerschillendeProducten
     )
 VALUES
-(1, 'Venco', 'Bert van Linge', 'L1029384719', '06-28493827', 2),
-(2, 'Astra Sweets', 'Jasper del Monte', 'L1029284315', '06-39398734', 4),
-(3, 'Haribo', 'Sven Stalman', 'L1029324748', '06-24383291', 2),
-(4, 'Basset', 'Joyce Stelterberg', 'L1023845773', '06-48293823', 1),
+(1, 'Venco', 'Bert van Linge', 'L1029384719', '06-28493827', 1),
+(2, 'Astra Sweets', 'Jasper del Monte', 'L1029284315', '06-39398734', 1),
+(3, 'Haribo', 'Sven Stalman', 'L1029324748', '06-24383291', 3),
+(4, 'Basset', 'Joyce Stelterberg', 'L1023845773', '06-48293823', 3),
 (5, 'De Bron', 'Remco Veenstra', 'L1023857736', '06-34291234', 3);
 
 
