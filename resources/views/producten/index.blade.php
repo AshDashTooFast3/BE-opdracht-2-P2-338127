@@ -39,11 +39,11 @@
                     @forelse ($producten as $product)
                         <tr>
                             <td>{{ $product->ProductNaam }}</td>
-                            <td>{{ $product->AantalMagazijn}}</td>
-                            <td>{{ $product->Verpakkingseenheid}}</td>
-                            <td>{{ $product->LaatsteLevering}}</td>
+                            <td>{{ $product->Aantal}}</td>
+                            <td>{{ $product->VerpakkingsEenheid}}</td>
+                            <td>{{ $product->DatumLevering}}</td>
                             <td class="text-center">
-                                <a href="{{ route('producten.create',  $product->Id) }}"      class="btn btn-danger btn-sm">+</a>
+                                <a href="{{ route('producten.edit', ['id' => $product->Id]) }}" class="btn btn-danger btn-sm">+</a>
                             </td>
                         </tr>
                     @empty

@@ -10,11 +10,12 @@ CREATE PROCEDURE sp_GetProductById(
 BEGIN
     SELECT DISTINCT
         P.Id,
-        P.Naam AS ProductNaam,
-        MAG.AantalAanwezig AS AantalMagazijn,
-        MAG.VerpakkingsEenheid AS Verpakkingseenheid,
-        PROPL.LeverancierId,
-        PROPL.LaatsteLevering
+        P.ProductNaam,
+        P.Barcode,
+        MAG.VerpakkingsEenheid,
+        PROPL.Aantal,
+        PROPL.DatumLevering,
+        PROPL.LeverancierId
     FROM Product AS P
     LEFT JOIN Magazijn AS MAG ON MAG.ProductId = P.Id
     LEFT JOIN ProductPerLeverancier AS PROPL ON PROPL.ProductId = P.Id

@@ -40,8 +40,8 @@ CREATE TABLE IF NOT EXISTS Magazijn (
     AantalAanwezig INT NULL DEFAULT NULL,
     IsActief BIT NOT NULL DEFAULT 1,
     Opmerkingen VARCHAR(250) NULL DEFAULT NULL,
-    DatumAangemaakt DATETIME(6) NOT NULL DEFAULT (SYSDATE(6)),
-    DatumGewijzigd DATETIME(6) NOT NULL DEFAULT (SYSDATE(6)),
+    DatumAangemaakt DATETIME(6) NOT NULL DEFAULT NOW(6),
+    DatumGewijzigd DATETIME(6) NOT NULL DEFAULT NOW(6),
     CONSTRAINT PK_Magazijn_Id PRIMARY KEY CLUSTERED(Id)
 ) ENGINE = InnoDB;
 
@@ -80,8 +80,12 @@ VALUES
 
 CREATE TABLE IF NOT EXISTS Product (
     Id TINYINT UNSIGNED NOT NULL AUTO_INCREMENT,
-    Naam VARCHAR(50) NOT NULL,
+    ProductNaam VARCHAR(50) NOT NULL,
     Barcode VARCHAR(30) NOT NULL,
+    IsActief BIT NOT NULL DEFAULT 1,
+    Opmerkingen VARCHAR(250) NULL DEFAULT NULL,
+    DatumAangemaakt DATETIME(6) NOT NULL DEFAULT NOW(6),
+    DatumGewijzigd DATETIME(6) NOT NULL DEFAULT NOW(6),
     CONSTRAINT PK_Product_Id PRIMARY KEY CLUSTERED(Id)
 ) ENGINE = InnoDB;
 
@@ -89,23 +93,24 @@ CREATE TABLE IF NOT EXISTS Product (
 INSERT INTO
     Product (
         Id,
-        Naam,
-        Barcode
+        ProductNaam,
+        Barcode,
+        IsActief
     )
 VALUES
-(1, 'Mintnopjes', '871123456001'),
-(2, 'Schoolkrijt', '871123456002'),
-(3, 'Dummy Product', '871123456003'), -- Added missing ProductId 3
-(4, 'Zure Beren', '871123456004'),
-(5, 'Cola Flesjes', '871123456005'),
-(6, 'Turtles', '871123456006'),
-(7, 'Witte Muizen', '871123456007'),
-(8, 'Reuzen Slangen', '871123456008'),
-(9, 'Zoute Rijen', '871123456009'),
-(10, 'Winegums', '871123456010'),
-(11, 'Drop Munten', '871123456011'),
-(12, 'Kruis Drop', '871123456012'),
-(13, 'Zoute Ruitjes', '871123456013');
+(1, 'Mintnopjes', '871123456001', 1),
+(2, 'Schoolkrijt', '871123456002', 1),
+(3, 'Dummy Product', '871123456003', 1),
+(4, 'Zure Beren', '871123456004', 1),
+(5, 'Cola Flesjes', '871123456005', 1),
+(6, 'Turtles', '871123456006', 1),
+(7, 'Witte Muizen', '871123456007', 1),
+(8, 'Reuzen Slangen', '871123456008', 1),
+(9, 'Zoute Rijen', '871123456009', 1),
+(10, 'Winegums', '871123456010', 0),
+(11, 'Drop Munten', '871123456011', 1),
+(12, 'Kruis Drop', '871123456012', 1),
+(13, 'Zoute Ruitjes', '871123456013', 1);
 
 -- Step: 03
 -- Goal: Create a new table Allergeen
@@ -159,6 +164,10 @@ CREATE TABLE IF NOT EXISTS ProductPerAllergeen (
     Id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
     ProductId TINYINT UNSIGNED NOT NULL,
     AllergeenId SMALLINT UNSIGNED NOT NULL,
+    IsActief BIT NOT NULL DEFAULT 1,
+    Opmerkingen VARCHAR(250) NULL DEFAULT NULL,
+    DatumAangemaakt DATETIME(6) NOT NULL DEFAULT NOW(6),
+    DatumGewijzigd DATETIME(6) NOT NULL DEFAULT NOW(6),
     PRIMARY KEY CLUSTERED(Id),
     FOREIGN KEY (ProductId) REFERENCES Product(Id) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (AllergeenId) REFERENCES Allergeen(Id) ON DELETE CASCADE ON UPDATE CASCADE
@@ -203,6 +212,10 @@ CREATE TABLE IF NOT EXISTS Leverancier (
     LeverancierNummer VARCHAR(20) NOT NULL,
     Mobiel VARCHAR(15) NOT NULL,
     AantalVerschillendeProducten INT NOT NULL DEFAULT 0,
+    IsActief BIT NOT NULL DEFAULT 1,
+    Opmerkingen VARCHAR(250) NULL DEFAULT NULL,
+    DatumAangemaakt DATETIME(6) NOT NULL DEFAULT NOW(6),
+    DatumGewijzigd DATETIME(6) NOT NULL DEFAULT NOW(6),
     CONSTRAINT PK_Leverancier_Id PRIMARY KEY CLUSTERED(Id)
 ) ENGINE = InnoDB;
 
@@ -242,7 +255,10 @@ ProductId TINYINT UNSIGNED NULL,
 DatumLevering DATE NOT NULL,
 Aantal INT NOT NULL,
 DatumEerstVolgendeLevering DATE NULL DEFAULT NULL,
-LaatsteLevering DATE AS (DatumLevering) STORED,
+IsActief BIT NOT NULL DEFAULT 1,
+Opmerkingen VARCHAR(250) NULL DEFAULT NULL,
+DatumAangemaakt DATETIME(6) NOT NULL DEFAULT NOW(6),
+DatumGewijzigd DATETIME(6) NOT NULL DEFAULT NOW(6),
 CONSTRAINT PK_ProductPerLeverancier_Id PRIMARY KEY CLUSTERED(Id),
 CONSTRAINT FK_ProductPerLeverancier_LeverancierId FOREIGN KEY (LeverancierId) REFERENCES Leverancier(Id) ON DELETE RESTRICT ON UPDATE CASCADE,
 CONSTRAINT FK_ProductPerLeverancier_ProductId FOREIGN KEY (ProductId) REFERENCES Product(Id) ON DELETE SET NULL ON UPDATE CASCADE

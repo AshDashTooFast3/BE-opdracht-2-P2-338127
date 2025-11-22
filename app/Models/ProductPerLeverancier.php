@@ -7,9 +7,22 @@ use Illuminate\Support\Facades\DB;
 
 class ProductPerLeverancier extends Model
 {
-    public function getAllProductPerLeveranciers()
-    {
-        return DB::select('CALL sp_GetAllProductPerLeveranciers()');
-    }
+    protected $table = 'ProductPerLeverancier';
+
+    protected $primaryKey = 'Id';
+
+    protected $fillable = [
+        'LeverancierId',
+        'ProductId',
+        'DatumLevering',
+        'Aantal',
+        'DatumEerstVolgendeLevering',
+        'IsActief',
+        'Opmerkingen',
+        'DatumAangemaakt',
+        'DatumGewijzigd',
+    ];
+
+    public $timestamps = false;
 
 }
