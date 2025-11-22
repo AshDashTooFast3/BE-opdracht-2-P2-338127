@@ -13,6 +13,7 @@ BEGIN
         P.Naam AS ProductNaam,
         MAG.AantalAanwezig AS AantalMagazijn,
         MAG.VerpakkingsEenheid AS Verpakkingseenheid,
+        PROPL.LeverancierId,
         PROPL.LaatsteLevering
     FROM Product AS P
     LEFT JOIN Magazijn AS MAG ON MAG.ProductId = P.Id

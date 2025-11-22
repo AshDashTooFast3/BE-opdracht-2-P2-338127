@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\DB;
 
 class Leverancier extends Model
 {
+    protected $table = 'Leverancier';
+
     public function getAllLeveranciers()
     {
         return DB::select('CALL sp_GetAllLeveranciers()');
