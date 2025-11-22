@@ -15,9 +15,7 @@
 
         @if ($productenlevering[0]->IsActief == 0)
             <div class="bg-red-500 text-white p-3 rounded mt-4">
-                <p>Het product {{ $productenlevering[0]->ProductNaam }} van de leverancier
-                    {{ !empty($leveranciers) && isset($leveranciers[0]) ? $leveranciers[0]->LeverancierNaam : '' }} wordt
-                    niet meer geproduceerd</p>
+                <p>Het product {{ $productenlevering[0]->ProductNaam }} van de leverancier {{ $productenlevering[0]->LeverancierNaam }} wordt niet meer geproduceerd</p>
                 <meta http-equiv="refresh" content="4;url={{ route('producten.index', ['id' => $leveranciers[0]->Id ?? 1]) }}">
             </div>
         @else

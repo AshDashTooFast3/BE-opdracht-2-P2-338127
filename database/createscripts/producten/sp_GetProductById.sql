@@ -8,6 +8,7 @@ BEGIN
     SELECT 
         P.Id AS ProductId,
         P.Naam AS ProductNaam,
+        L.Naam AS LeverancierNaam,
         MAG.Verpakkingseenheid,
         PROPL.Id AS ProductPerLeverancierId,
         PROPL.LeverancierId,
@@ -17,6 +18,7 @@ BEGIN
         P.IsActief
     FROM Product AS P
     LEFT JOIN ProductPerLeverancier AS PROPL ON PROPL.ProductId = P.Id
+    LEFT JOIN Leverancier AS L ON L.Id = PROPL.LeverancierId
     LEFT JOIN Magazijn AS MAG ON MAG.ProductId = P.Id
     WHERE P.Id = p_productid;
 END$$
