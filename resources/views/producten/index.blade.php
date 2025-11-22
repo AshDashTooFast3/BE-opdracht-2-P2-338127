@@ -29,28 +29,38 @@
 
             <table class="table table-hover table-striped">
                 <thead>
-                    <th>Naam product</th>
-                    <th>Aantal Magazijn</th>
-                    <th>Verpakkingseenheid</th>
-                    <th>Laatste levering</th>
-                    <th>Nieuwe levering</th>
+                    <tr>
+                        <th>Naam product</th>
+                        <th>Aantal Magazijn</th>
+                        <th>Verpakkingseenheid</th>
+                        <th>Laatste levering</th>
+                        <th>Nieuwe levering</th>
+                    </tr>
                 </thead>
                 <tbody>
                     @foreach ($producten as $product)
+                        @if ($product->Aantal > 0)
+                            <tr>
+                                <td>{{ $product->ProductNaam }}</td>
+                                <td>{{ $product->Aantal }}</td>
+                                <td>{{ $product->VerpakkingsEenheid }}</td>
+                                <td>{{ $product->DatumLevering }}</td>
+                                <td class="text-center">
+                                    <a href="{{ route('producten.edit', ['id' => $product->ProductId]) }}"
+                                        class="btn btn-danger btn-sm">+</a>
+                                </td>
+                            </tr>
+                        @else
                         <tr>
-                            <td>{{ $product->ProductNaam }}</td>
-                            <td>{{ $product->Aantal}}</td>
-                            <td>{{ $product->VerpakkingsEenheid}}</td>
-                            <td>{{ $product->DatumLevering}}</td>
-                            <td class="text-center">
-                                <a href="{{ route('producten.edit', ['id' => $product->ProductId]) }}"
-                                    class="btn btn-danger btn-sm">+</a>
-                            </td>
+                            <td colspan="5" class="text-center">Dit bedrijf heeft tot nu toe geen producten geleverd aan Jamin</td>
                         </tr>
-
+                        <meta http-equiv="refresh" content="3;url={{ route('home') }}">
+                        @endif
                     @endforeach
                 </tbody>
             </table>
+
+
             <div class="d-flex justify-content-between align-items-center mt-4">
                 <button type="submit" class=""></button>
 

@@ -18,6 +18,7 @@
                 <p>Het product {{ $productenlevering[0]->ProductNaam }} van de leverancier
                     {{ !empty($leveranciers) && isset($leveranciers[0]) ? $leveranciers[0]->LeverancierNaam : '' }} wordt
                     niet meer geproduceerd</p>
+                <meta http-equiv="refresh" content="4;url={{ route('producten.index', ['id' => $leveranciers[0]->Id ?? 1]) }}">
             </div>
         @else
             <form action="{{ route('producten.update', ['id' => $levering->LeverancierId ?? 1]) }}" method="POST">
