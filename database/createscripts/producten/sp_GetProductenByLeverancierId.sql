@@ -13,7 +13,10 @@ BEGIN
         PROPL.ProductId,
         P.Naam AS ProductNaam,
         PROPL.Aantal,
-        MAG.VerpakkingsEenheid,
+         IF(MAG.VerpakkingsEenheid = FLOOR(MAG.VerpakkingsEenheid),
+           FLOOR(MAG.VerpakkingsEenheid),
+           MAG.VerpakkingsEenheid
+        ) AS VerpakkingsEenheid,
         PROPL.DatumLevering,
         PROPL.DatumEerstVolgendeLevering,
         PROPL.IsActief,

@@ -43,7 +43,7 @@
                             <tr>
                                 <td>{{ $product->ProductNaam }}</td>
                                 <td>{{ $product->Aantal }}</td>
-                                <td>{{ $product->VerpakkingsEenheid }}</td>
+                                <td>{{ $product->VerpakkingsEenheid }} kg</td>
                                 <td>{{ $product->DatumLevering }}</td>
                                 <td class="text-center">
                                     <a href="{{ route('producten.edit', ['id' => $product->ProductId]) }}"

@@ -36,7 +36,7 @@ DROP TABLE IF EXISTS Leverancier;
 CREATE TABLE IF NOT EXISTS Magazijn (
     Id TINYINT UNSIGNED NOT NULL AUTO_INCREMENT,
     ProductId TINYINT UNSIGNED NOT NULL,
-    VerpakkingsEenheid DECIMAL(3,1) NOT NULL,
+    VerpakkingsEenheid DECIMAL(3,0) NOT NULL,
     AantalAanwezig INT NULL DEFAULT NULL,
     IsActief BIT NOT NULL DEFAULT 1,
     Opmerkingen VARCHAR(250) NULL DEFAULT NULL,
@@ -100,7 +100,7 @@ INSERT INTO
 VALUES
 (1, 'Mintnopjes', '871123456001', 1),
 (2, 'Schoolkrijt', '871123456002', 1),
-(3, 'Dummy Product', '871123456003', 1),
+(3, 'Honingdrop', '871123456003', 1),
 (4, 'Zure Beren', '871123456004', 1),
 (5, 'Cola Flesjes', '871123456005', 1),
 (6, 'Turtles', '871123456006', 1),
