@@ -29,7 +29,7 @@
                 <tbody>
                     @forelse ($leveranciers as $leverancier)
                         <tr>
-                            <td>{{ $leverancier->Naam }}</td>
+                            <td>{{ $leverancier->LeverancierNaam }}</td>
                             <td>{{ $leverancier->ContactPersoon}}</td>
                             <td>{{ $leverancier->LeverancierNummer}}</td>
                             <td>{{ $leverancier->Mobiel}}</td>

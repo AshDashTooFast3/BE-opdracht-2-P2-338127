@@ -1,22 +1,23 @@
 use BE_Opdracht_2;
 
 DROP PROCEDURE IF EXISTS sp_GetLeverancierById;
-
 DELIMITER $$
 
 CREATE PROCEDURE sp_GetLeverancierById(
     IN p_leverancierid INT
 )
 BEGIN
-    SELECT DISTINCT
+    SELECT 
         L.Id,
-        L.Naam ,
+        L.Naam AS LeverancierNaam,
         L.ContactPersoon,
-        L.Mobiel,
-        L.LeverancierNummer
-    FROM Leverancier AS L
-    LEFT JOIN ProductPerLeverancier AS PROPL ON PROPL.LeverancierId = L.Id
-    WHERE L.Id = p_leverancierid;
+        L.LeverancierNummer,
+        L.Mobiel
+    FROM Leverancier L
+    WHERE L.Id = p_leverancierid
+    LIMIT 1;
 END$$
 
-DELIMITER ;
+DELIMITER ;                      <td colspan="5" class="text-center">Dit bedrijf heeft tot nu toe geen producten geleverd aan Jamin</td>
+                            <meta http-equiv="refresh" content="3;url={{ route('home') }}">
+                        </tr>

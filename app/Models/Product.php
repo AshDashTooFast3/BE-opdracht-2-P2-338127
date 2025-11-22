@@ -23,9 +23,9 @@ class Product extends Model
 
     public $timestamps = false;
 
-    public function getProductById($id)
+    public function GetProductenByLeverancierId($leverancierId)
     {
-        return DB::select('CALL sp_GetProductById(?)', [$id]);
+        return DB::select("CALL sp_GetProductenByLeverancierId(?)", [$leverancierId]);    
     }
 
     public function getLeverancierById($id)

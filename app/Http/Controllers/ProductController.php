@@ -17,7 +17,7 @@ class ProductController extends Controller
 
     public function index($Id)
     {
-        $producten = $this->product->getProductById($Id);
+        $producten = $this->product->GetProductenByLeverancierId($Id);
         $leveranciers = $this->product->getLeverancierById($Id);
 
         return view('producten.index', [

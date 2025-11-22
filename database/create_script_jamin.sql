@@ -80,7 +80,7 @@ VALUES
 
 CREATE TABLE IF NOT EXISTS Product (
     Id TINYINT UNSIGNED NOT NULL AUTO_INCREMENT,
-    ProductNaam VARCHAR(50) NOT NULL,
+    Naam VARCHAR(50) NOT NULL,
     Barcode VARCHAR(30) NOT NULL,
     IsActief BIT NOT NULL DEFAULT 1,
     Opmerkingen VARCHAR(250) NULL DEFAULT NULL,
@@ -93,7 +93,7 @@ CREATE TABLE IF NOT EXISTS Product (
 INSERT INTO
     Product (
         Id,
-        ProductNaam,
+        Naam,
         Barcode,
         IsActief
     )

@@ -8,7 +8,7 @@ CREATE PROCEDURE sp_GetAllLeveranciers()
 BEGIN
     
     SELECT LEV.Id
-          ,LEV.Naam
+          ,LEV.Naam AS LeverancierNaam
           ,LEV.ContactPersoon
           ,LEV.LeverancierNummer
           ,LEV.Mobiel

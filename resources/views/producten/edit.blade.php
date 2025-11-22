@@ -13,6 +13,12 @@
         <h1>{{ $title }}</h1>
         <p>{{ $message }}</p>
 
+         @if ($levering->IsActief == 0)
+            <div class="bg-red-500 text-white p-3 rounded mt-4">
+                <p>Het product {{ $product->ProductNaam }} van de leverancier {{ $leveranciers[0]->LeverancierNaam }} wordt niet meer geproduceerd</p>
+            </div>
+        @endif
+
         <form action="{{ route('producten.update', ['id' => $levering->LeverancierId ?? 1]) }}" method="POST">
             @csrf
             @method('PUT')
@@ -38,7 +44,6 @@
                 </div>
             </div>
         </form>
-
     </div>
 </body>
 
