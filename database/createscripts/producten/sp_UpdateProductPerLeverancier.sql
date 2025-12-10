@@ -11,7 +11,7 @@ CREATE PROCEDURE sp_UpdateProductPerLeverancier(
 BEGIN
     UPDATE ProductPerLeverancier
     SET
-        Aantal = p_aantal,
+        Aantal = Aantal + p_aantal,
         DatumLevering = p_datumlevering,
         DatumGewijzigd = SYSDATE(6)
     WHERE Id = p_id;

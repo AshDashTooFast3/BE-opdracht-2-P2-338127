@@ -18,7 +18,7 @@ BEGIN
             MAG.VerpakkingsEenheid
         ) AS VerpakkingsEenheid,
         DATE_FORMAT(MAX(PROPL.DatumLevering), '%d-%m-%Y') AS DatumLevering,
-        DATE_FORMAT(NOW(6), '%d-%m-%Y') AS DatumEerstVolgendeLevering,
+        DATE_FORMAT(MAX(NOW(6)), '%d-%m-%Y') AS DatumEerstVolgendeLevering,
         MAX(PROPL.IsActief) AS IsActief,
         MAX(PROPL.Opmerkingen) AS Opmerkingen,
         MAX(PROPL.DatumAangemaakt) AS DatumAangemaakt,
@@ -29,6 +29,7 @@ BEGIN
     WHERE PROPL.LeverancierId = p_leverancierid
     GROUP BY PROPL.ProductId
     ORDER BY MAX(PROPL.DatumLevering) DESC;
+
 
 END$$
 
