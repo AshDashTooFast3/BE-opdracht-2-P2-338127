@@ -1,0 +1,67 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Magazijn;
+use App\Models\Product;
+use Illuminate\Http\Request;
+
+class ProductController extends Controller
+{
+    private $product;
+
+    public function __construct()
+    {
+        $this->product = new Product;
+    }
+
+    public function index($Id)
+    {
+        $producten = $this->product->GetProductenByLeverancierId($Id);
+        $leveranciers = $this->product->getLeverancierById($Id);
+
+        return view('producten.index', [
+            'title' => 'Geleverde producten',
+            'producten' => $producten,
+            'leveranciers' => $leveranciers,
+        ]);
+
+    }
+
+    public function edit($id)
+    {
+        $productenlevering = $this->product->getProductById($id);
+        $leveranciers = $this->product->getLeverancierById($id);
+
+        
+        return view('producten.edit', [
+            'title' => 'Levering product',
+            'productenlevering' => $productenlevering,
+            'leveranciers' => $leveranciers,
+        ]);
+    }
+
+    public function update(Request $request, $id)
+    {
+       //dd($request->all());
+        $validated = $request->validate([
+            'Aantal' => 'required|integer',
+            'DatumLevering' => 'required|date',
+        ]);
+
+        // dd($validated);
+
+        $affected = $this->product->UpdateProductPerLeverancier(
+            $id,
+            $validated['Aantal'],
+            $validated['DatumLevering']
+        );
+
+        if ($affected === 0){
+            return back()->with('error', 'Er is niets gewijzigd of error bestaat niet');
+        }
+
+        return redirect()->route('producten.index', ['id' => $id])
+                         ->with('success', 'Product succesvol bijgewerkt');
+    }
+}
