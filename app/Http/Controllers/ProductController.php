@@ -45,14 +45,21 @@ class ProductController extends Controller
 
     public function update(Request $request, $id)
     {
+        $productenlevering = $this->product->getProductById($id);
 
-       //dd($request->all());
+        $IsActief = $request->input('IsActief');
+
         $validated = $request->validate([
             'Aantal' => 'required|integer',
             'DatumLevering' => 'required|date',
         ]);
 
-        // dd($validated);
+        if ($IsActief == 0) {
+            return back()->
+            with('error', 'Het product: '. 
+            $productenlevering[0]->ProductNaam . ' van de leverancier: '. 
+            $productenlevering[0]->LeverancierNaam . ' wordt niet meer geproduceerd');
+        } 
 
         $affected = $this->product->UpdateProductPerLeverancier(
             $id,

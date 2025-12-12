@@ -23,7 +23,7 @@
             <div class="alert alert-danger mt-3">
                 {{ session('error') }}
             </div>
-            <meta http-equiv="refresh" content="2">
+            <meta http-equiv="refresh" content="4">
         @endif
 
         <form action="{{ route('producten.update', ['id' => $productId]) }}" method="POST">
@@ -33,6 +33,11 @@
             <div class="mb-3">
                 <label for="Aantal" class="form-label">Aantal producteenheden</label>
                 <input type="number" class="form-control" id="Aantal" name="Aantal" min="1" required>
+            </div>
+
+            <div class="mb-3 hidden">
+                <label for="IsActief" class="form-label">IsActief</label>
+                <input type="number" class="form-control" id="IsActief" name="IsActief" min="0" max="1" required value="{{ old('IsActief', $productenlevering[0]->IsActief ?? '') }}">
             </div>
 
             <div class="mb-3">
