@@ -12,7 +12,7 @@ BEGIN
     UPDATE ProductPerLeverancier
     SET
         Aantal = Aantal + p_aantal,
-        DatumLevering = p_datumlevering,
+        DatumLevering = SYSDATE(6),
         DatumGewijzigd = SYSDATE(6)
     WHERE Id = p_id;
 
