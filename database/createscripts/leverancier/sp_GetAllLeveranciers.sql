@@ -19,7 +19,8 @@ BEGIN
     LEFT JOIN ProductPerLeverancier AS PPL
         ON LEV.Id = PPL.LeverancierId
     
-    GROUP BY LEV.Id;
+    GROUP BY LEV.Id
+    ORDER BY AantalVeschillendeProducten DESC;
 
 END$$
 

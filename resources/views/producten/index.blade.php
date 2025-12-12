@@ -54,7 +54,7 @@
                 @endif
 
                 <tbody>
-                    @foreach ($producten as $product)
+                    @forelse ($producten as $product)
                         @if ($product->Aantal > 0)
                             <tr>
                                 <td>{{ $product->ProductNaam }}</td>
@@ -66,13 +66,13 @@
                                         class="btn btn-danger btn-sm">+</a>
                                 </td>
                             </tr>
-                        @else
+                        @endif
+                    @empty
                         <tr>
-                            <td colspan="5" class="text-center">Dit bedrijf heeft tot nu toe geen producten geleverd aan Jamin</td>
+                            <td colspan="5" class="text-center">dit bedrijf heeft tot nu toe geen producten geleverd aan Jamin</td>
                         </tr>
                         <meta http-equiv="refresh" content="3;url={{ route('home') }}">
-                        @endif
-                    @endforeach
+                    @endforelse
                 </tbody>
             </table>
 
