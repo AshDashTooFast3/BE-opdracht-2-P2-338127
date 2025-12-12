@@ -54,12 +54,15 @@ class ProductController extends Controller
             'DatumLevering' => 'required|date',
         ]);
 
+        $leverancierId = $productenlevering[0]->LeverancierId ?? $id;
+
         if ($IsActief == 0) {
-            return back()->
-            with('error', 'Het product: '. 
-            $productenlevering[0]->ProductNaam . ' van de leverancier: '. 
-            $productenlevering[0]->LeverancierNaam . ' wordt niet meer geproduceerd');
-        } 
+            return back()
+            ->with('error', 'Het product: ' .
+                $productenlevering[0]->ProductNaam . ' van de leverancier: ' .
+                $productenlevering[0]->LeverancierNaam . ' wordt niet meer geproduceerd')
+            ->with('redirect_after', route('producten.index', ['id' => $leverancierId]));
+        }
 
         $affected = $this->product->UpdateProductPerLeverancier(
             $id,
@@ -72,7 +75,6 @@ class ProductController extends Controller
         }
 
         // Haal de juiste leverancier_id op voor redirect
-        $leverancierId = $productenlevering[0]->LeverancierId ?? $id;
 
         return redirect()->route('producten.index', ['id' => $leverancierId])
                  ->with('success', 'Product succesvol bijgewerkt');

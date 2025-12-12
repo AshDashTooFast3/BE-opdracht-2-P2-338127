@@ -23,7 +23,7 @@
             <div class="alert alert-danger mt-3">
                 {{ session('error') }}
             </div>
-            <meta http-equiv="refresh" content="4">
+            <meta http-equiv="refresh" content="4;url={{ session('redirect_after') }}">
         @endif
 
         <form action="{{ route('producten.update', ['id' => $productId]) }}" method="POST">
