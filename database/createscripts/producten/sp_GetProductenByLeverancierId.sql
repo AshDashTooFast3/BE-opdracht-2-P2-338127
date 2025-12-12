@@ -12,7 +12,7 @@ BEGIN
         PPL.ProductId,
         PROD.Naam AS ProductNaam,
         MAG.AantalAanwezig,
-        MAG.VerpakkingsEenheid,
+        FLOOR(MAG.VerpakkingsEenheid) AS VerpakkingsEenheid,
         DATE_FORMAT(MAX(PPL.DatumLevering), '%d-%m-%Y') AS DatumLevering
     FROM ProductPerLeverancier AS PPL
     INNER JOIN Magazijn AS MAG 
