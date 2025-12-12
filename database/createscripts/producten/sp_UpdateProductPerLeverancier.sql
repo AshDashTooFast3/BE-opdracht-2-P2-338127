@@ -9,18 +9,21 @@ CREATE PROCEDURE sp_UpdateProductPerLeverancier(
     IN p_datumlevering DATE
 )
 BEGIN
+    DECLARE affected_rows INT DEFAULT 0;
+
     UPDATE Magazijn
     SET
         AantalAanwezig = AantalAanwezig + p_aantal
     WHERE ProductId = p_id;
+    SET affected_rows = affected_rows + ROW_COUNT();
 
     UPDATE ProductPerLeverancier
     SET
         DatumLevering = SYSDATE(6)
     WHERE ProductId = p_id;
+    SET affected_rows = affected_rows + ROW_COUNT();
 
-    SELECT ROW_COUNT() AS affected;
-
+    SELECT affected_rows AS affected;
 
 END$$
 

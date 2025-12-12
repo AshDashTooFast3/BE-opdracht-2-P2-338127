@@ -71,7 +71,10 @@ class ProductController extends Controller
             return back()->with('error', 'Er is niets gewijzigd, probeer het later opnieuw.');
         }
 
-        return redirect()->route('producten.index', ['id' => $id])
-                         ->with('success', 'Product succesvol bijgewerkt');
-    }
+        // Haal de juiste leverancier_id op voor redirect
+        $leverancierId = $productenlevering[0]->LeverancierId ?? $id;
+
+        return redirect()->route('producten.index', ['id' => $leverancierId])
+                 ->with('success', 'Product succesvol bijgewerkt');
+        }
 }
