@@ -55,10 +55,10 @@
 
                 <tbody>
                     @forelse ($producten as $product)
-                        @if ($product->Aantal > 0)
+                        @if (!empty($producten))
                             <tr>
                                 <td>{{ $product->ProductNaam }}</td>
-                                <td>{{ $product->Aantal }}</td>
+                                <td>{{ $product->AantalAanwezig }}</td>
                                 <td>{{ $product->VerpakkingsEenheid }} kg</td>
                                 <td>{{ $product->DatumLevering }}</td>
                                 <td class="text-center">

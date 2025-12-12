@@ -20,6 +20,7 @@ class ProductController extends Controller
         $producten = $this->product->GetProductenByLeverancierId($Id);
         $leveranciers = $this->product->getLeverancierById($Id);
 
+
         return view('producten.index', [
             'title' => 'Geleverde producten',
             'producten' => $producten,
@@ -38,11 +39,13 @@ class ProductController extends Controller
             'title' => 'Levering product',
             'productenlevering' => $productenlevering,
             'leveranciers' => $leveranciers,
+            'productId' => $id
         ]);
     }
 
     public function update(Request $request, $id)
     {
+
        //dd($request->all());
         $validated = $request->validate([
             'Aantal' => 'required|integer',
@@ -58,7 +61,7 @@ class ProductController extends Controller
         );
 
         if ($affected === 0){
-            return back()->with('error', 'Er is niets gewijzigd of error bestaat niet');
+            return back()->with('error', 'Er is niets gewijzigd, probeer het later opnieuw.');
         }
 
         return redirect()->route('producten.index', ['id' => $id])

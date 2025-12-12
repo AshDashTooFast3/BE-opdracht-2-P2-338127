@@ -12,7 +12,7 @@ BEGIN
           ,LEV.ContactPersoon
           ,LEV.LeverancierNummer
           ,LEV.Mobiel
-          ,COUNT(DISTINCT PPL.ProductId) AS AantalVeschillendeProducten
+          ,COUNT(DISTINCT PPL.ProductId) AS AantalVerschillendeProducten
         
     FROM Leverancier AS LEV
     
@@ -20,7 +20,7 @@ BEGIN
         ON LEV.Id = PPL.LeverancierId
     
     GROUP BY LEV.Id
-    ORDER BY AantalVeschillendeProducten DESC;
+    ORDER BY AantalVerschillendeProducten DESC, LEV.Naam DESC;
 
 END$$
 
