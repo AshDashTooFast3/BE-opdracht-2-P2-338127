@@ -43,7 +43,8 @@
                     <button type="submit" class="btn btn-primary">Sla op</button>
 
                     <div class="d-flex gap-2">
-                        <a href="javascript:history.back()" class="btn btn-secondary">Terug</a>
+                        <a href="{{ route('producten.index', ['id' => $productenlevering[0]->LeverancierId ?? 1]) }}"
+                            class="btn btn-secondary">Terug</a>
                         <a href="{{ route('home') }}" class="btn btn-secondary">Home</a>
                     </div>
                 </div>

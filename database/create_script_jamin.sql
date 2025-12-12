@@ -50,7 +50,7 @@ INSERT INTO Product (Id, Naam, Barcode, IsActief, Opmerkingen, DatumAangemaakt, 
 (7, 'Witte Muizen', '8719587328256', 1, NULL, NOW(6), NOW(6)),
 (8, 'Reuzen Slangen', '8719587325641', 1, NULL, NOW(6), NOW(6)),
 (9, 'Zoute Rijen', '8719587322739', 1, NULL, NOW(6), NOW(6)),
-(10, 'Winegums', '8719587327527', 1, NULL, NOW(6), NOW(6)),
+(10, 'Winegums', '8719587327527', 0, NULL, NOW(6), NOW(6)),
 (11, 'Drop Munten', '8719587322345', 1, NULL, NOW(6), NOW(6)),
 (12, 'Kruis Drop', '8719587322265', 1, NULL, NOW(6), NOW(6)),
 (13, 'Zoute Ruitjes', '8719587323256', 1, NULL, NOW(6), NOW(6));
