@@ -12,11 +12,17 @@ BEGIN
           ,LEV.ContactPersoon
           ,LEV.LeverancierNummer
           ,LEV.Mobiel
-          ,LEV.AantalVerschillendeProducten AS VerschillendeProducten
-          
+          ,COUNT(DISTINCT PPL.ProductId) AS AantalVeschillendeProducten
+        
     FROM Leverancier AS LEV
-    ORDER BY LEV.AantalVerschillendeProducten DESC;
+    
+    LEFT JOIN ProductPerLeverancier AS PPL
+        ON LEV.Id = PPL.LeverancierId
+    
+    GROUP BY LEV.Id;
 
 END$$
 
 DELIMITER ;
+
+CALL sp_GetAllLeveranciers;

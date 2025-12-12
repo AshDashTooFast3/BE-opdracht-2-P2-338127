@@ -33,7 +33,7 @@
                             <td>{{ $leverancier->ContactPersoon}}</td>
                             <td>{{ $leverancier->LeverancierNummer}}</td>
                             <td>{{ $leverancier->Mobiel}}</td>
-                            <td class="text-center">{{ $leverancier->VerschillendeProducten }}</td>
+                            <td>{{ $leverancier->AantalVeschillendeProducten }}</td>                       
                            <td class="text-center">
                                 <form action="{{ route('producten.index', $leverancier->Id) }}" method="POST">
                                     @csrf

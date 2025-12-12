@@ -13,5 +13,4 @@ class Leverancier extends Model
     {
         return DB::select('CALL sp_GetAllLeveranciers()');
     }
-
 }
